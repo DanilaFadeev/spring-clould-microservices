@@ -1,7 +1,7 @@
 spring:
   rabbitmq:
     port: 5672
-    host: localhost # rabbitmq
+    host: rabbitmq
     username: admin
     password: admin
     listener:
@@ -9,4 +9,4 @@ spring:
         default-requeue-rejected: true
 
 server:
-  port: 9999
+  port: 8084

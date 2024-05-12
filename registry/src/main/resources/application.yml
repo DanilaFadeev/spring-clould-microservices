@@ -9,7 +9,7 @@ spring:
       password: admin
       username: user
   config:
-    import: configserver:http://localhost:8001
+    import: configserver:http://config-service:8001
 
 eureka:
   instance:
