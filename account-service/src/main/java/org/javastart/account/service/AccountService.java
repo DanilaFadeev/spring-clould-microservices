@@ -13,6 +13,10 @@ import java.util.List;
 public class AccountService {
     private final AccountRepository accountRepository;
 
+    public List<Account> getAccounts() {
+        return accountRepository.findAll();
+    }
+
     public Account getAccountById(Long accountId) {
         return accountRepository
                 .findById(accountId)

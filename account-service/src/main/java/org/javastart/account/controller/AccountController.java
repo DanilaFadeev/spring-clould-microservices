@@ -9,16 +9,24 @@ import org.javastart.account.service.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class AccountController {
     private final AccountService accountService;
     private final AccountMapper accountMapper;
 
+    @GetMapping("/")
+    public List<AccountResponseDto> getAccounts() {
+        List<Account> accounts = accountService.getAccounts();
+        return accounts.stream().map(accountMapper::toAccountResponseDto).toList();
+    }
+
     @GetMapping("/{accountId}")
     public AccountResponseDto getAccount(@PathVariable Long accountId) {
         Account account = accountService.getAccountById(accountId);
-        return accountMapper.entityToResponseDto(account);
+        return accountMapper.toAccountResponseDto(account);
     }
 
     @PostMapping("/")
@@ -40,12 +48,12 @@ public class AccountController {
                 accountRequestDto.getEmail(),
                 accountRequestDto.getPhone()
         );
-        return accountMapper.entityToResponseDto(account);
+        return accountMapper.toAccountResponseDto(account);
     }
 
     @DeleteMapping("/{accountId}")
     public AccountResponseDto deleteAccount(@PathVariable("accountId") long accountId) {
         Account account = accountService.deleteAccount(accountId);
-        return accountMapper.entityToResponseDto(account);
+        return accountMapper.toAccountResponseDto(account);
     }
 }

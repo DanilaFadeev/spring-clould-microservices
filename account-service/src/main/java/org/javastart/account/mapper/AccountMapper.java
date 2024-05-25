@@ -2,17 +2,12 @@ package org.javastart.account.mapper;
 
 import org.javastart.account.dto.AccountResponseDto;
 import org.javastart.account.entity.Account;
-import org.springframework.stereotype.Component;
+import org.mapstruct.InjectionStrategy;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
-@Component
-public class AccountMapper {
-    public AccountResponseDto entityToResponseDto(Account account) {
-        return new AccountResponseDto(
-                account.getId(),
-                account.getName(),
-                account.getEmail(),
-                account.getPhone(),
-                account.getCreatedAt()
-        );
-    }
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        injectionStrategy = InjectionStrategy.FIELD)
+public interface AccountMapper {
+    AccountResponseDto toAccountResponseDto(Account account);
 }

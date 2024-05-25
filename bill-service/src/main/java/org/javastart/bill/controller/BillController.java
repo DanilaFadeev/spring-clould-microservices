@@ -21,7 +21,7 @@ public class BillController {
     @ResponseStatus(HttpStatus.OK)
     public BillResponseDto getBillById(@PathVariable("billId") Long billId) {
         Bill bill = billService.getBillById(billId);
-        return billMapper.entityToResponseDto(bill);
+        return billMapper.toResponseDto(bill);
     }
 
     @PostMapping("/")
@@ -39,7 +39,7 @@ public class BillController {
     public List<BillResponseDto> getBillsByAccountId(@PathVariable("accountId") Long accountId) {
         return billService.getBillsByAccountId(accountId)
                 .stream()
-                .map(billMapper::entityToResponseDto)
+                .map(billMapper::toResponseDto)
                 .toList();
     }
 }
