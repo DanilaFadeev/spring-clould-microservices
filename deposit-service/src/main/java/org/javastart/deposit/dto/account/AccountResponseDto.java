@@ -17,4 +17,5 @@ public class AccountResponseDto {
     private String email;
     private String phone;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

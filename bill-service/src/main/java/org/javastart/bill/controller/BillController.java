@@ -9,6 +9,8 @@ import org.javastart.bill.service.BillService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class BillController {
@@ -30,5 +32,14 @@ public class BillController {
                 billRequestDto.getIsDefault(),
                 billRequestDto.getAccountId()
         );
+    }
+
+    @GetMapping("/by-account/{accountId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<BillResponseDto> getBillsByAccountId(@PathVariable("accountId") Long accountId) {
+        return billService.getBillsByAccountId(accountId)
+                .stream()
+                .map(billMapper::entityToResponseDto)
+                .toList();
     }
 }

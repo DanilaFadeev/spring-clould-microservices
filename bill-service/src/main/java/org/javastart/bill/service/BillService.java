@@ -7,6 +7,7 @@ import org.javastart.bill.repository.BillRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -26,5 +27,9 @@ public class BillService {
         bill.setAccountId(accountId);
 
         return billRepository.save(bill).getId();
+    }
+
+    public List<Bill> getBillsByAccountId(Long accountId) {
+        return billRepository.getBillsByAccountId(accountId);
     }
 }

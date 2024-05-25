@@ -34,4 +34,10 @@ public class Deposit {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public Deposit(BigDecimal amount, String email, Long billId) {
+         this.amount = amount;
+         this.email = email;
+         this.billId = billId;
+    }
 }

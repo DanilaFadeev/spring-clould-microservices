@@ -48,15 +48,13 @@ dependencies {
     compileOnly "org.projectlombok:lombok"
     annotationProcessor 'org.projectlombok:lombok'
 
-    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    /**
+     * Tests
+     */
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.2'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
     testImplementation 'com.h2database:h2:2.2.220'
-    testImplementation "org.mockito:mockito-core:3.2.4"
-    testImplementation "org.assertj:assertj-core:2.2.0"
-    testImplementation 'org.testng:testng:7.7.0'
-    testImplementation "org.jmockit:jmockit:1.49"
-    testImplementation 'junit:junit:4.13.1'
-    testImplementation "org.junit.jupiter:junit-jupiter:5.6.0"
-    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.6.0"
 }
 
 test {
